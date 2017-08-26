@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Milestone 1 - Part 2</title>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<style>
+			body {
+		background-color: #d4d4d4;
+		font-family: sans-serif;
+	}
+	
+	#header {
+		background-color: #41579d;
+		width: 90%;
+		margin: 0 auto;
+		height: 80%;
+		margin-top: -10px;
+	}
+	
+	.previousPageLink {
+		color: black;
+		font-style: bold;
+		float: left;
+		margin-top: -30px;
+		margin-left: 10px;
+	}
+	
+	a {
+		color: #fff;
+		font-style: bold;
+	}
+	
+	a:visited {
+		color: #fff;
+	}
+	
+	a:hover {
+		color: fuchsia;
+	}
+	
+	.heading-text {
+		text-align: center;
+		padding-top: 20px;
+		color: #fff;
+	}
+	
+	#results {
+		background-color: #ffffff;
+		margin-top: 20px;
+		padding-bottom: 20px;
+		width: 90%;
+		margin: 0 auto;	
+		border: 1px solid black;
+	}
+	
+	img {
+		float: left;
+		margin-left: 50px;
+		margin-right: 30px;
+		margin-top: 30px;
+		border: 2px solid black;
+		width: 250px;
+		height: 350px;
+	}
+	
+	h2 {
+		margin-top: 20px;
+	}
+	
+	h4 {
+		font-style: italic;
+		margin-top: -15px;
+	}	
+	
+	.description {
+		margin-right: 60px;
+	}
+	
+	.clickable {
+		color: black;
+	}
+	
+	.indent {
+		margin-left: 335px;
+	}
+	</style>
+	</head>
+	
+	<body>
+		<body>
+		<div id = "header">
+		<h1 class="heading-text">Book Search Results</h1>
+		<p class="previousPageLink"><a href="milestone1.html">Back to Previous Page</a></p>
+		</div>
+		<br>
+		<br>
+		
+		<div id = "results"></div>
+		
+		
+		<script>
+			$(function() {
+				var json = {
+					"Error": "0",
+					"Time": 0.00307,
+					"ID": 2563063616,
+					"Title": "The Modern Web",
+					"SubTitle": "Multi-Device Web Development with HTML5, CSS3, and JavaScript",
+					"Description": "Today's web technologies are evolving at nearu2013light speed, bringing the promise of a seamless Internet ever closer to reality. When users can browse the Web on a three-inch phone screen as easily as on a fifty-inch HDTV, what's a developer to do?nnPeter Gasston's The Modern Web will guide you through the latest and most important tools of device-agnostic web development, including HTML5, CSS3, and JavaScript. His plain-English explanations and practical examples emphasize the techniques, principles, and practices that you'll need to easily transcend individual browser quirks and stay relevant as these technologies are updated.",
+					"Author": "Peter Gasston",
+					"ISBN": "9781593274870",
+					"Year": "2013",
+					"Page": "264",
+					"Publisher": "No Starch Press",
+					"Image": "http://s.it-ebooks-api.info/15/the_modern_web.jpg",
+					"Download": "http://filepi.com/i/pgA18Dw"
+				}
+				
+				var book = "<img src='" + json.Image + "'><h2><b>" + json.Title + ":</h2><h4><em>" + json.SubTitle + "</em></h4></b><b>Author: </b>" + json.Author + "<br><br><b>Publisher: </b>" + json.Publisher + "&nbsp;&nbsp;&nbsp;&nbsp<b>Year Published: </b>" + json.Year + "&nbsp;&nbsp;&nbsp;&nbsp;<b>Number of Pages: </b>" + json.Page + "<br><br><b>Book ID: </b>" + json.ID + "<br><br><b>ISBN: </b>" + json.ISBN + "<br><br><div class = 'description'><b>Description: </b><em>" + json.Description + "</em></div><p class='indent'><b>Download Link: </b>&nbsp;&nbsp;<a class='clickable' href='" + json.Download + "'>" + json.Download + "</a></p>";
+				$("#results").append(book);
+			})
+					
+		</script>	
+
+	</body>
+
+</html>

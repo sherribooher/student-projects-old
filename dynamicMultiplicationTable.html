@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "UTF-8">
+		<title>Dynamic Multiplication Table</title>
+		<link href = "css/tableStyle.css" rel = "stylesheet">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script type = "text/javascript" src = "js/dynamicTable.js"></script>
+	</head>
+	
+	<body>
+		<h1>Dynamic Multiplication Table</h1>
+		<br />
+		<div class = "userInput">
+			<p>
+				<label for = "row" class = "inlineLabel">Number of Rows:</label>
+				<input type = "number" id = "row" min = "0" max = "100" step = "1" value = "0">
+			</p>
+						
+			<p>
+				<label for "column" class = "inlineLabel">Number of Columns:</label>
+				<input type = "number" id = "column" min = "0" max = "100" step = "1" value = "0">
+			</p>
+			<br />
+			<div class = "buttons">
+				<input type = "button" id = "createButton" onclick = "createTable();" value = "Create!" />
+			</div>
+		</div>
+		
+		<div id = "tableResult"></div>
+	</body>
+</html>
+		
+			
+		
+		

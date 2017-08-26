@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Milestone 1 - Part 1</title>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<style>
+			body {
+		background-color: #d4d4d4;
+		font-family: sans-serif;
+	}
+	
+	#header {
+		background-color: #41579d;
+		width: 90%;
+		margin: 0 auto;
+		height: 80%;
+		margin-top: -10px;
+	}
+	
+	.previousPageLink {
+		color: black;
+		font-style: bold;
+		float: left;
+		margin-top: -30px;
+		margin-left: 10px;
+	}
+	
+	a {
+		color: #fff;
+		font-style: bold;
+	}
+	
+	a:visited {
+		color: #fff;
+	}
+	
+	a:hover {
+		color: fuchsia;
+	}
+	
+	.heading-text {
+		text-align: center;
+		padding-top: 20px;
+		color: #fff;
+	}
+	
+	#books {
+		background-color: #ffffff;
+		margin-top: 10px;
+		padding-bottom: 30px;
+		width: 90%;
+		margin: 0 auto;	
+		border: 1px solid black;
+	}
+	
+	img {
+		float: left;
+		margin-left: 30px;
+		margin-right: 20px;
+		border: 2px solid black;
+		width: 204px;
+		height: 250px;
+		margin-bottom: 20px;
+	}
+	
+	h2 {
+		margin-top: -5px;
+	}
+	
+	h4 {
+		font-style: italic;
+		margin-top: -15px;
+	}	
+	
+	.description {
+		margin-right: 80px;
+	}
+	</style>
+	</head>
+	
+	<body>
+		<div id = "header">
+		<h1 class="heading-text">Book Search Results</h1>
+		<p class="previousPageLink"><a href="milestone1.html">Back to Previous Page</a></p>
+		</div>	
+					
+		<script>
+			$.getJSON('http://it-ebooks-api.info/v1/search/modern%20web', function(data) {
+			$.each(data.Books, function(){
+				$('<br><div class="results"></div>').append(
+				
+						'<div id="books">' + '<br><img src="' + this.Image + '">' + '<p><h2>' + this.Title +  ':</h2>' + '<h4>'+ this.SubTitle + '</h4></p>' + 
+						'<p><b>ID Number:&nbsp;&nbsp;</b>' + this.ID + '</p>' + '<p ><b>ISBN:&nbsp;&nbsp;</b>' + this.isbn + '</p> ' + 
+						'<p class="description"><b>Description:&nbsp;&nbsp;</b><em>' + this.Description + '</em></p>' + '<br></div>'
+					
+				).appendTo("body");
+			
+			})
+		
+		
+		});
+	</script>			
+	</body>
+</html>

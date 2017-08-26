@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Milestone 1 - Part 3</title>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<style>
+			body {
+		background-color: #d4d4d4;
+		font-family: sans-serif;
+	}
+
+	#header {
+		background-color: #41579d;
+		width: 92%;
+		margin: 0 auto;
+		height: 80%;
+		margin-top: -10px;
+	}
+
+	.previousPageLink {
+		color: black;
+		font-style: bold;
+		float: left;
+		margin-top: -30px;
+		margin-left: 10px;
+	}
+
+	a {
+		color: #fff;
+		font-style: bold;
+	}
+
+	a:visited {
+		color: #fff;
+	}
+
+	a:hover {
+		color: fuchsia;
+	}
+
+	.heading-text {
+		text-align: center;
+		padding-top: 20px;
+		color: #fff;
+	}
+
+	#results {
+		background-color: #ffffff;
+		margin-top: 20px;
+		padding-left: 20px;
+		padding-bottom: 20px;
+		width: 90%;
+		margin: 0 auto;
+		border: 1px solid black;
+	}
+
+	img {
+		float: right;
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 0px;
+		border: 2px solid black;
+		width: 250px;
+		height: 350px;
+	}
+
+	.medium {
+		width: 175px;
+		height: 40px;
+		border: 1px solid black;
+		border-radius: 30px;
+		background-color: #41579d;
+		font-family: sans-serif;
+		font-size: 18px;
+		font-color: #fff;
+		margin-left: -8px;
+		margin-top: 15px;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	h2 {
+		margin-top: 30px;
+	}
+
+	h4 {
+		font-style: italic;
+		margin-top: -15px;
+	}
+
+	.description {
+		margin-right: 60px;
+	}
+
+	.clickable {
+		color: black;
+	}
+
+	.indent {
+		margin-left: 335px;
+	}
+	</style>
+	</head>
+
+	<body>
+		<body>
+		<div id = "header">
+		<h1 class="heading-text">Book Search Results</h1>
+		<p class="previousPageLink"><a href="milestone1.html">Back to Previous Page</a></p>
+		</div>
+		<br>
+
+		<div id="results"></div>
+		<br>
+
+		<script>
+
+		$.getJSON('https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC', function(data) {
+
+					$('<div class="bookMainInfo"></div>').append(
+						"<div id='bookInfo'>" + "<img src='" + data.volumeInfo.imageLinks.medium + "'><b><h2>" + data.volumeInfo.title +
+						":</h2><h4><em>" + data.volumeInfo.subtitle + "</em></h4><p>Authors:&nbsp;&nbsp;</b>" + data.volumeInfo.authors + 						"<p><p><b>Publisher:&nbsp;&nbsp;</b>" + data.volumeInfo.publisher + "&nbsp;&nbsp;&nbsp;<b>Year Published:&nbsp;&nbsp;</b>" + 											data.volumeInfo.publishedDate + "</p><p><b>Categories:&nbsp;&nbsp;</b><em>" + data.volumeInfo.categories + "</em></p><p><b>List " + 									"Price:&nbsp;&nbsp;</b>" + data.saleInfo.listPrice.amount + "&nbsp;" + data.saleInfo.listPrice.currencyCode + "<p><b>Retail "
+						+ "Price:&nbsp;&nbsp;</b>" + data.saleInfo.retailPrice.amount + "&nbsp;" + data.saleInfo.retailPrice.currencyCode + "<br><button class='medium'>" +
+						"<a style='color: white; text-decoration: none;' href='" + data.saleInfo.buyLink + "'>Buy from Google</a></b></button>" +
+						"<p><b>Description:&nbsp;&nbsp;</b><em>" + data.volumeInfo.description + "</p><br><p class='center'><b><a style='color: black;' href='" + 									data.accessInfo.webReaderLink + "'>View a Web Reader book sample by clicking here.</a></em></b></p>" +
+						"<br><hr>" + "<p><h3 style='text-align:'center''>More Information" + "</h3></b></p><p><b>" + data.volumeInfo.industryIdentifiers[0].type +
+						":</b>&nbsp;&nbsp;" + data.volumeInfo.industryIdentifiers[0].identifier + "</p><p><b>" + data.volumeInfo.industryIdentifiers[1].type +
+						":</b>&nbsp;&nbsp;" + data.volumeInfo.industryIdentifiers[1].identifier + "</p>" + "<p><b>Book Language:&nbsp;&nbsp;</b>" + 											data.volumeInfo.language + "</p><p><b>Number of Pages: &nbsp;&nbsp;</b>" + data.volumeInfo.pageCount + 						"&nbsp;&nbsp;&nbsp;<b>Printed Page Count:&nbsp;&nbsp;</b>" + data.volumeInfo.printedPageCount + "</p><p><b>" + 						"Dimensions:&nbsp;&nbsp;&nbsp;Height:&nbsp;</b>" + data.volumeInfo.dimensions.height + "&nbsp;&nbsp;&nbsp;<b>Width:&nbsp;</b>" + 										data.volumeInfo.dimensions.width + "&nbsp;&nbsp;<b>Thickness:&nbsp;</b>" + data.volumeInfo.dimensions.thickness + 						"<p><b>Average Rating:&nbsp;&nbsp;</b>" + data.volumeInfo.averageRating + "&nbsp;&nbsp;<b>Number of Total Ratings: &nbsp;&nbsp;</b>" + 									data.volumeInfo.ratingsCount + "</p><p><b>Maturity Rating:&nbsp;&nbsp;</b>" + data.volumeInfo.maturityRating +
+						"</p><p><b>Content Version:&nbsp;&nbsp;</b>" + data.volumeInfo.contentVersion + "</p><br><p><b><em><a style = 'color: black;' href='" + 								data.volumeInfo.previewLink + "'>Click here for the Google Books Listing</a></em></b></p>" + "<p><b><em><a style='color: black;' href='" + 								data.volumeInfo.infoLink + "'>More Detailed Information Link</a></em></b></p>" + "<p><b><em><a style='color: black;' href = '" + 										data.volumeInfo.canonicalVolumeLink + "'>Canonical Volume Link</a></em></b></p>"
+						).appendTo('#results');
+					})
+
+		</script>
+
+	</body>
+
+</html>
